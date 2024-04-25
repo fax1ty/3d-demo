@@ -44,11 +44,7 @@ export function Model() {
 
   useControls({ animations: buttonGroup({ toggle }) });
 
-  return (
-    <group ref={ref}>
-      <primitive object={scene} />
-    </group>
-  );
+  return <primitive object={scene} ref={ref} />;
 }
 
 useGLTF.preload(glb);
