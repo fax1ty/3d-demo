@@ -4,12 +4,51 @@ import {
   DepthOfField,
   EffectComposer,
   HueSaturation,
+  SMAA,
   ToneMapping,
 } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 import { Suspense, useMemo } from "react";
 import { degToRad } from "three/src/math/MathUtils.js";
+
+const BLEND_FUNCTIONS = {
+  SKIP: BlendFunction.SKIP,
+  SET: BlendFunction.SET,
+  ADD: BlendFunction.ADD,
+  ALPHA: BlendFunction.ALPHA,
+  AVERAGE: BlendFunction.AVERAGE,
+  COLOR: BlendFunction.COLOR,
+  COLOR_BURN: BlendFunction.COLOR_BURN,
+  COLOR_DODGE: BlendFunction.COLOR_DODGE,
+  DARKEN: BlendFunction.DARKEN,
+  DIFFERENCE: BlendFunction.DIFFERENCE,
+  DIVIDE: BlendFunction.DIVIDE,
+  DST: BlendFunction.DST,
+  EXCLUSION: BlendFunction.EXCLUSION,
+  HARD_LIGHT: BlendFunction.HARD_LIGHT,
+  HARD_MIX: BlendFunction.HARD_MIX,
+  HUE: BlendFunction.HUE,
+  INVERT: BlendFunction.INVERT,
+  INVERT_RGB: BlendFunction.INVERT_RGB,
+  LIGHTEN: BlendFunction.LIGHTEN,
+  LINEAR_BURN: BlendFunction.LINEAR_BURN,
+  LINEAR_DODGE: BlendFunction.LINEAR_DODGE,
+  LINEAR_LIGHT: BlendFunction.LINEAR_LIGHT,
+  LUMINOSITY: BlendFunction.LUMINOSITY,
+  MULTIPLY: BlendFunction.MULTIPLY,
+  NEGATION: BlendFunction.NEGATION,
+  NORMAL: BlendFunction.NORMAL,
+  OVERLAY: BlendFunction.OVERLAY,
+  PIN_LIGHT: BlendFunction.PIN_LIGHT,
+  REFLECT: BlendFunction.REFLECT,
+  SATURATION: BlendFunction.SATURATION,
+  SCREEN: BlendFunction.SCREEN,
+  SOFT_LIGHT: BlendFunction.SOFT_LIGHT,
+  SRC: BlendFunction.SRC,
+  SUBTRACT: BlendFunction.SUBTRACT,
+  VIVID_LIGHT: BlendFunction.VIVID_LIGHT,
+};
 
 export function Effects() {
   const {
@@ -30,6 +69,7 @@ export function Effects() {
     toneMappingMaxLuminance,
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
+    antialiasing,
   } = useControls({
     brightnessContrast: folder(
       {
@@ -49,7 +89,10 @@ export function Effects() {
     ),
     hueSaturation: folder(
       {
-        hueBlendFunction: BlendFunction.NORMAL,
+        hueBlendFunction: {
+          value: BlendFunction.NORMAL,
+          options: BLEND_FUNCTIONS,
+        },
         hue: { min: -180, max: 180, step: 1, value: 0 },
         saturation: 0,
       },
@@ -57,7 +100,10 @@ export function Effects() {
     ),
     toneMapping: folder(
       {
-        toneMappingBlendFunction: BlendFunction.NORMAL,
+        toneMappingBlendFunction: {
+          value: BlendFunction.NORMAL,
+          options: BLEND_FUNCTIONS,
+        },
         adaptiveToneMapping: true,
         toneMappingResolution: 256,
         toneMappingMiddleGrey: 0.6,
@@ -67,6 +113,7 @@ export function Effects() {
       },
       { collapsed: true }
     ),
+    antialiasing: { value: "msaa", options: ["msaa", "smaa"] },
   });
 
   const hueRads = useMemo(() => degToRad(hue), [hue]);
@@ -74,7 +121,7 @@ export function Effects() {
 
   return (
     <Suspense>
-      <EffectComposer>
+      <EffectComposer multisampling={antialiasing === "msaa" ? 8 : 0}>
         <BrightnessContrast brightness={brightness} contrast={contrast} />
         <DepthOfField
           focusDistance={focusDistance}
@@ -96,6 +143,8 @@ export function Effects() {
           adaptationRate={toneMappingAdaptationRate}
         />
         <Bloom intensity={bloomIntensity} mipmapBlur={mipmapBlur} />
+
+        <>{antialiasing === "smaa" && <SMAA />}</>
       </EffectComposer>
     </Suspense>
   );
