@@ -4,7 +4,7 @@ import { Scene } from "./scene";
 
 export default function App() {
   return (
-    <Canvas>
+    <Canvas dpr={window.devicePixelRatio}>
       <Scene />
     </Canvas>
   );
