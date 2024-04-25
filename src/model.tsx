@@ -7,6 +7,7 @@ import { useEmissiveNoToneMapped } from "@/hooks/use-emessive";
 import { usePlayEverything } from "@/hooks/use-play-everything";
 
 import model from "./model.glb";
+import { buttonGroup, useControls } from "leva";
 
 export function Model() {
   const ref = useRef<Group | null>(null);
@@ -27,9 +28,11 @@ export function Model() {
   const { animations, scene } = useGLTF(model);
 
   const { actions } = useAnimations(animations, ref);
-  usePlayEverything(actions);
+  const { toggle } = usePlayEverything(actions);
 
   useEmissiveNoToneMapped(scene);
+
+  useControls({ animations: buttonGroup({ toggle }) });
 
   return (
     <group ref={ref}>
