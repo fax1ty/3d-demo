@@ -75,6 +75,12 @@ export function Effects() {
   } = useControls({
     brightnessContrast: folder(
       {
+        exposure: { min: -1, max: 5, value: 0.6 }
+      },
+      { collapsed: true }
+    ),
+    GodRays: folder(
+      {
         brightness: { min: -1, max: 1, value: 0 },
         contrast: { min: -1, max: 1, value: 0 },
       },
@@ -145,22 +151,6 @@ export function Effects() {
           adaptationRate={toneMappingAdaptationRate}
         />
         <Bloom intensity={bloomIntensity} mipmapBlur={mipmapBlur} />
-
-        <GodRays
-    sun={sunRef}
-    blendFunction={BlendFunction.Screen} 
-    samples={60} 
-    density={0.96} 
-    decay={0.9}
-    weight={0.4} 
-    exposure={0.6} 
-    clampMax={1} 
-    width={Resizer.AUTO_SIZE} 
-    height={Resizer.AUTO_SIZE} 
-    kernelSize={KernelSize.SMALL} 
-    blur={true} 
-  />
-
         <>{antialiasing === "smaa" && <SMAA />}</>
       </EffectComposer>
 
