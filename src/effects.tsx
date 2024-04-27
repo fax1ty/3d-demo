@@ -6,6 +6,7 @@ import {
   HueSaturation,
   SMAA,
   ToneMapping,
+  GodRays
 } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
