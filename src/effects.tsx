@@ -6,7 +6,7 @@ import {
   HueSaturation,
   SMAA,
   ToneMapping,
-  GodRays
+  GodRays,
 } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
@@ -71,10 +71,13 @@ export function Effects() {
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
     antialiasing,
-    exposure,
-    decay,
-    blur
+    GodRaysExposure,
   } = useControls({
+    GodRays: folder(
+      {
+        exposure: { min: -1, max: 1, value: 0.6 },
+      }
+    ),
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0 },
@@ -117,12 +120,6 @@ export function Effects() {
       },
       { collapsed: true }
     ),
-    GodRays: folder {
-      exposure: 0.34,
-      decay: 0.9,
-      blur: false
-      },
-
     antialiasing: { value: "msaa", options: ["msaa", "smaa"] },
   });
 
@@ -132,7 +129,6 @@ export function Effects() {
   return (
     <Suspense>
       <EffectComposer multisampling={antialiasing === "msaa" ? 8 : 0}>
-      <GodRays sun={material} exposure={exposure} decay={decay} blur={blur} />
         <BrightnessContrast brightness={brightness} contrast={contrast} />
         <DepthOfField
           focusDistance={focusDistance}
@@ -154,9 +150,9 @@ export function Effects() {
           adaptationRate={toneMappingAdaptationRate}
         />
         <Bloom intensity={bloomIntensity} mipmapBlur={mipmapBlur} />
+        <GodRays sun={material} exposure={exposure} decay={decay} blur={blur} />
         <>{antialiasing === "smaa" && <SMAA />}</>
       </EffectComposer>
-
     </Suspense>
   );
 }
