@@ -74,7 +74,7 @@ export function Effects() {
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0 },
-        contrast: { min: -1, max: 1, value: 0.16 },
+        contrast: { min: -1, max: 1, value: 0.0 },
       },
       { collapsed: true }
     ),
@@ -94,7 +94,7 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         hue: { min: -180, max: 180, step: 1, value: 0 },
-        saturation: 6,
+        saturation: 8,
       },
       { collapsed: true }
     ),
