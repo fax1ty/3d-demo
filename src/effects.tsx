@@ -71,6 +71,7 @@ export function Effects() {
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
     antialiasing,
+    GodRays
   } = useControls({
     brightnessContrast: folder(
       {
@@ -157,7 +158,7 @@ export function Effects() {
     width={Resizer.AUTO_SIZE} 
     height={Resizer.AUTO_SIZE} 
     kernelSize={KernelSize.SMALL} 
-    blur={true} /
+    blur={true} 
   />
 
         <>{antialiasing === "smaa" && <SMAA />}</>
