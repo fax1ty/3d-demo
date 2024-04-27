@@ -71,6 +71,9 @@ export function Effects() {
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
     antialiasing,
+    exposure,
+    decay,
+    blur
   } = useControls({
     brightnessContrast: folder(
       {
