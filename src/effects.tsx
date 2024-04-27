@@ -70,14 +70,9 @@ export function Effects() {
     toneMappingMaxLuminance,
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
-    antialiasing,
-    GodRaysExposure,
+    antialiasing
   } = useControls({
-    GodRays: folder(
-      {
-        exposure: { min: -1, max: 1, value: 0.6 },
-      }
-    ),
+
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0 },
@@ -121,7 +116,24 @@ export function Effects() {
       { collapsed: true }
     ),
     antialiasing: { value: "msaa", options: ["msaa", "smaa"] },
-  });
+  })
+
+  const { exposure, decay, blur } = useControls('PostProcessing - GodRays', {
+    exposure: {
+      value: 0.34,
+      min: 0,
+      max: 1,
+    },
+    decay: {
+      value: 0.9,
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
+    blur: {
+      value: false,
+    },
+  })
 
   const hueRads = useMemo(() => degToRad(hue), [hue]);
   const saturationRads = useMemo(() => degToRad(saturation), [saturation]);
@@ -129,6 +141,7 @@ export function Effects() {
   return (
     <Suspense>
       <EffectComposer multisampling={antialiasing === "msaa" ? 8 : 0}>
+      <GodRays sun={material} exposure={exposure} decay={decay} blur={blur} />
         <BrightnessContrast brightness={brightness} contrast={contrast} />
         <DepthOfField
           focusDistance={focusDistance}
@@ -150,7 +163,7 @@ export function Effects() {
           adaptationRate={toneMappingAdaptationRate}
         />
         <Bloom intensity={bloomIntensity} mipmapBlur={mipmapBlur} />
-        <GodRays sun={material} exposure={exposure} decay={decay} blur={blur} />
+        
         <>{antialiasing === "smaa" && <SMAA />}</>
       </EffectComposer>
     </Suspense>
