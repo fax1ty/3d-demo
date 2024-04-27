@@ -75,14 +75,14 @@ export function Effects() {
   } = useControls({
     brightnessContrast: folder(
       {
-        exposure: { min: -1, max: 5, value: 0.6 }
+        brightness: { min: -1, max: 1, value: 0 },
+        contrast: { min: -1, max: 1, value: 0 },
       },
       { collapsed: true }
     ),
     GodRays: folder(
       {
-        brightness: { min: -1, max: 1, value: 0 },
-        contrast: { min: -1, max: 1, value: 0 },
+        exposure: { min: -1, max: 5, value: 0.6 }
       },
       { collapsed: true }
     ),
