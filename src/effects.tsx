@@ -114,21 +114,11 @@ export function Effects() {
       },
       { collapsed: true }
     ),
-    const { exposure, decay, blur } = useControls('PostProcessing - GodRays', {
-      exposure: {
-        value: 0.34,
-        min: 0,
-        max: 1,
+    GodRays: folder {
+      exposure: 0.34,
+      decay: 0.9,
+      blur: false
       },
-      decay: {
-        value: 0.9,
-        min: 0,
-        max: 1,
-        step: 0.1,
-      },
-      blur: {
-        value: false,
-      }},
 
     antialiasing: { value: "msaa", options: ["msaa", "smaa"] },
   });
