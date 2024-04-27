@@ -6,7 +6,6 @@ import {
   HueSaturation,
   SMAA,
   ToneMapping,
-  GodRays,
 } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
@@ -71,18 +70,11 @@ export function Effects() {
     toneMappingAverageLuminance,
     toneMappingAdaptationRate,
     antialiasing,
-    GodRays
   } = useControls({
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0 },
         contrast: { min: -1, max: 1, value: 0 },
-      },
-      { collapsed: true }
-    ),
-    GodRays: folder(
-      {
-        exposure: { min: -1, max: 5, value: 0.6 }
       },
       { collapsed: true }
     ),
