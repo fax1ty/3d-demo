@@ -78,7 +78,10 @@ export function Effects() {
       },
       { collapsed: true }
     ),
-    bloom: folder({ bloomIntensity: 0.5, mipmapBlur: true }, { collapsed: true }),
+    bloom: folder(
+      { bloomIntensity: 0.5, mipmapBlur: true },
+      { collapsed: true }
+    ),
     depthOfField: folder(
       {
         focusDistance: 17,
@@ -93,8 +96,8 @@ export function Effects() {
           value: BlendFunction.NORMAL,
           options: BLEND_FUNCTIONS,
         },
-        hue: { min: -180, max: 180, step: 1, value: 0 },
-        saturation: 8,
+        hue: { min: -90, max: 90, step: 1, value: 0 },
+        saturation: { min: -90, max: 90, step: 1, value: 0 },
       },
       { collapsed: true }
     ),
