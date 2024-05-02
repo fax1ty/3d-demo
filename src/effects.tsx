@@ -73,18 +73,18 @@ export function Effects() {
   } = useControls({
     brightnessContrast: folder(
       {
-        brightness: { min: -1, max: 1, value: 0 },
-        contrast: { min: -1, max: 1, value: 0.0 },
+        brightness: { min: -1, max: 1, value: 0.22 },
+        contrast: { min: -1, max: 1, value: 0.38 },
       },
       { collapsed: true }
     ),
     bloom: folder(
-      { bloomIntensity: 0.5, mipmapBlur: true },
+      { bloomIntensity: 0.3, mipmapBlur: true },
       { collapsed: true }
     ),
     depthOfField: folder(
       {
-        focusDistance: 17,
+        focusDistance: 12,
         focalLength: 63,
         bokehScale: 5,
       },
@@ -108,11 +108,11 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         adaptiveToneMapping: true,
-        toneMappingResolution: 256,
-        toneMappingMiddleGrey: 0.6,
-        toneMappingMaxLuminance: 16,
-        toneMappingAverageLuminance: 1,
-        toneMappingAdaptationRate: 1,
+        toneMappingResolution: 1024,
+        toneMappingMiddleGrey: 0.04,
+        toneMappingMaxLuminance: 46,
+        toneMappingAverageLuminance: 15,
+        toneMappingAdaptationRate: 0.6,
       },
       { collapsed: true }
     ),
