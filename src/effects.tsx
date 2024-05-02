@@ -97,7 +97,7 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         hue: { min: -90, max: 90, step: 1, value: 0 },
-        saturation: { min: -90, max: 90, step: 1, value: 0 },
+        saturation: { min: -90, max: 90, step: 1, value: 8 },
       },
       { collapsed: true }
     ),
