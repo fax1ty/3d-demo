@@ -8,7 +8,13 @@ export const Environment = () => {
       files={hdri}
       environmentIntensity={0.5}
       environmentRotation={[45, Math.PI / 2, 0]}
-      preset={night}
     />
   );
 };
+<Lightformer
+  form="rect"
+  intensity={0.5}
+  color="white"
+  scale={[10, 5]}
+  target={[0, 0, 0]}
+/>;
