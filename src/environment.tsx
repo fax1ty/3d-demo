@@ -11,10 +11,3 @@ export const Environment = () => {
     />
   );
 };
-<Lightformer
-  form="rect"
-  intensity={0.5}
-  color="white"
-  scale={[10, 5]}
-  target={[0, 0, 0]}
-/>;
