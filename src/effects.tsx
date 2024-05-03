@@ -81,8 +81,6 @@ export function Effects() {
     bloom: folder(
       { bloomIntensity: 1.0, mipmapBlur: true },
       { collapsed: true }
-      {luminanceThreshold: 0.2}
-      {luminanceSmoothing: 0.1}
     ),
     depthOfField: folder(
       {
