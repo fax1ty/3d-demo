@@ -4,10 +4,11 @@ import hdri from "./hdri.hdr";
 
 export const Environment = () => {
   return (
-    <Environment
+    <EnvironmentBase
       files={hdri}
       environmentIntensity={0.5}
       environmentRotation={[45, Math.PI / 2, 0]}
+      preset={night}
     />
   );
 };
