@@ -84,7 +84,7 @@ export function Effects() {
     ),
     depthOfField: folder(
       {
-        focusDistance: 12,
+        focusDistance: 7,
         focalLength: 63,
         bokehScale: 5,
       },
