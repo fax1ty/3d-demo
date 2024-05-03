@@ -81,6 +81,8 @@ export function Effects() {
     bloom: folder(
       { bloomIntensity: 1.0, mipmapBlur: true },
       { collapsed: true }
+      {luminanceThreshold: 0.2}
+      {luminanceSmoothing: 0.1}
     ),
     depthOfField: folder(
       {
@@ -148,8 +150,8 @@ export function Effects() {
         <Bloom
           intensity={bloomIntensity}
           mipmapBlur={mipmapBlur}
-          luminanceThreshold={0.1}
-          luminanceSmoothing={0.3}
+          luminanceThreshold={0.02}
+          luminanceSmoothing={0.1}
         />
 
         <>{antialiasing === "smaa" && <SMAA />}</>
