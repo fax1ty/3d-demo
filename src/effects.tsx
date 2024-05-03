@@ -110,7 +110,7 @@ export function Effects() {
         adaptiveToneMapping: true,
         toneMappingResolution: 1024,
         toneMappingMiddleGrey: 0.6,
-        toneMappingMaxLuminance: 16.0,
+        toneMappingMaxLuminance: 9.0,
         toneMappingAverageLuminance: 1.0,
         toneMappingAdaptationRate: 1.0,
       },
