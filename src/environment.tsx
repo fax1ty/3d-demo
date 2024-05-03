@@ -6,8 +6,8 @@ export const Environment = () => {
   return (
     <EnvironmentBase
       files={hdri}
-      environmentIntensity={2}
-      environmentRotation={[0, Math.PI / 2, 0]}
+      environmentIntensity={1.3}
+      environmentRotation={[45, Math.PI / 2, 0]}
     />
   );
 };
