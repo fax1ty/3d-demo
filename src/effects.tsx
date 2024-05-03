@@ -148,8 +148,8 @@ export function Effects() {
         <Bloom
           intensity={bloomIntensity}
           mipmapBlur={mipmapBlur}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0}
+          luminanceThreshold={0.1}
+          luminanceSmoothing={0.3}
         />
 
         <>{antialiasing === "smaa" && <SMAA />}</>
