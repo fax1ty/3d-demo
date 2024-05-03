@@ -96,7 +96,7 @@ export function Effects() {
           value: BlendFunction.NORMAL,
           options: BLEND_FUNCTIONS,
         },
-        hue: { min: -90, max: 90, step: 1, value: 0 },
+        hue: { min: -90, max: 90, step: 1, value: 4 },
         saturation: { min: -90, max: 90, step: 1, value: 12 },
       },
       { collapsed: true }
