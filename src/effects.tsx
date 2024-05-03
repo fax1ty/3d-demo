@@ -73,8 +73,8 @@ export function Effects() {
   } = useControls({
     brightnessContrast: folder(
       {
-        brightness: { min: -1, max: 1, value: 0.04 },
-        contrast: { min: -1, max: 1, value: 0.18 },
+        brightness: { min: -1, max: 1, value: 0.06 },
+        contrast: { min: -1, max: 1, value: 0.2 },
       },
       { collapsed: true }
     ),
@@ -108,11 +108,11 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         adaptiveToneMapping: true,
-        toneMappingResolution: 1024,
-        toneMappingMiddleGrey: 0.6,
-        toneMappingMaxLuminance: 9.0,
-        toneMappingAverageLuminance: 1.0,
-        toneMappingAdaptationRate: 1.0,
+        toneMappingResolution: 256,
+        toneMappingMiddleGrey: 0.8,
+        toneMappingMaxLuminance: 4.0,
+        toneMappingAverageLuminance: 0.05,
+        toneMappingAdaptationRate: 0.6,
       },
       { collapsed: true }
     ),
