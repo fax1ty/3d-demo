@@ -73,8 +73,8 @@ export function Effects() {
   } = useControls({
     brightnessContrast: folder(
       {
-        brightness: { min: -1, max: 1, value: 0.16 },
-        contrast: { min: -1, max: 1, value: 0.34 },
+        brightness: { min: -1, max: 1, value: 0.0 },
+        contrast: { min: -1, max: 1, value: 0.2 },
       },
       { collapsed: true }
     ),
@@ -108,7 +108,7 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         adaptiveToneMapping: true,
-        toneMappingResolution: 256,
+        toneMappingResolution: 1024,
         toneMappingMiddleGrey: 0.6,
         toneMappingMaxLuminance: 16.0,
         toneMappingAverageLuminance: 1.0,
