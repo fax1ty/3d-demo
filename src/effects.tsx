@@ -71,6 +71,8 @@ export function Effects() {
     toneMappingAdaptationRate,
     antialiasing,
   } = useControls({
+    thickness: { value: 3, min: 0, max: 10 },
+    intensity: { value: 2.5, min: 0, max: 5 },
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0.06 },
