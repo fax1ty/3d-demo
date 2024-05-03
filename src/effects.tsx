@@ -145,7 +145,13 @@ export function Effects() {
           averageLuminance={toneMappingAverageLuminance}
           adaptationRate={toneMappingAdaptationRate}
         />
-        <Bloom intensity={bloomIntensity} mipmapBlur={mipmapBlur} />
+        <Bloom
+          intensity={bloomIntensity}
+          mipmapBlur={mipmapBlur}
+          luminanceThreshold={0.2}
+          luminanceSmoothing={0}
+          intensity={1.75}
+        />
 
         <>{antialiasing === "smaa" && <SMAA />}</>
       </EffectComposer>
