@@ -7,10 +7,13 @@ import {
   SMAA,
   ToneMapping,
 } from "@react-three/postprocessing";
+import { FXAA } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 import { Suspense, useMemo } from "react";
 import { degToRad } from "three/src/math/MathUtils.js";
+
+import { GLToneMappingControls } from "./gl-tonemapping";
 
 const BLEND_FUNCTIONS = {
   SKIP: BlendFunction.SKIP,
@@ -116,7 +119,7 @@ export function Effects() {
       },
       { collapsed: true }
     ),
-    antialiasing: { value: "msaa", options: ["msaa", "smaa"] },
+    antialiasing: { value: "msaa", options: ["msaa", "smaa", "fxaa"] },
   });
 
   const hueRads = useMemo(() => degToRad(hue), [hue]);
@@ -124,6 +127,7 @@ export function Effects() {
 
   return (
     <Suspense>
+      <GLToneMappingControls />
       <EffectComposer multisampling={antialiasing === "msaa" ? 8 : 0}>
         <BrightnessContrast brightness={brightness} contrast={contrast} />
         <DepthOfField
@@ -153,6 +157,7 @@ export function Effects() {
         />
 
         <>{antialiasing === "smaa" && <SMAA />}</>
+        <>{antialiasing === "fxaa" && <FXAA />}</>
       </EffectComposer>
     </Suspense>
   );
