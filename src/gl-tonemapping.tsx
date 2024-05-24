@@ -17,7 +17,7 @@ export function GLToneMappingControls() {
 
   const { glToneMapping, glToneMappingExposure } = useControls({
     glToneMapping: {
-      value: NoToneMapping,
+      value: ACESFilmicToneMapping,
       options: {
         NoToneMapping,
         LinearToneMapping,
@@ -29,7 +29,7 @@ export function GLToneMappingControls() {
         NeutralToneMapping,
       },
     },
-    glToneMappingExposure: { min: 0, value: 1 },
+    glToneMappingExposure: { min: 0, value: 1.0 },
   });
 
   useEffect(() => {

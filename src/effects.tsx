@@ -82,12 +82,12 @@ export function Effects() {
       { collapsed: true }
     ),
     bloom: folder(
-      { bloomIntensity: 1.0, mipmapBlur: true },
+      { bloomIntensity: 0.2, mipmapBlur: false },
       { collapsed: true }
     ),
     depthOfField: folder(
       {
-        focusDistance: 7,
+        focusDistance: 12,
         focalLength: 63,
         bokehScale: 5,
       },
@@ -99,8 +99,8 @@ export function Effects() {
           value: BlendFunction.NORMAL,
           options: BLEND_FUNCTIONS,
         },
-        hue: { min: -90, max: 90, step: 1, value: 4 },
-        saturation: { min: -90, max: 90, step: 1, value: 12 },
+        hue: { min: -90, max: 90, step: 1, value: 0 },
+        saturation: { min: -90, max: 90, step: 1, value: 8 },
       },
       { collapsed: true }
     ),
@@ -112,14 +112,14 @@ export function Effects() {
         },
         adaptiveToneMapping: true,
         toneMappingResolution: 256,
-        toneMappingMiddleGrey: 0.8,
+        toneMappingMiddleGrey: 0.6,
         toneMappingMaxLuminance: 4.0,
         toneMappingAverageLuminance: 0.05,
         toneMappingAdaptationRate: 0.6,
       },
       { collapsed: true }
     ),
-    antialiasing: { value: "msaa", options: ["msaa", "smaa", "fxaa"] },
+    antialiasing: { value: "fxaa", options: ["msaa", "smaa", "fxaa"] },
   });
 
   const hueRads = useMemo(() => degToRad(hue), [hue]);

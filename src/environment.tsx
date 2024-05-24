@@ -9,12 +9,12 @@ export const Environment = () => {
   const { environmentIntensity, environmentRotation } = useControls(
     "hdri",
     {
-      environmentIntensity: { min: 0, step: 0.1, value: 0.5 },
+      environmentIntensity: { min: 0, step: 0.1, value: 1.0 },
       environmentRotation: {
         min: 0,
         max: 180,
         step: 1,
-        value: [45, 90, 0],
+        value: [55, 107, 10],
       },
     },
     { collapsed: true }
