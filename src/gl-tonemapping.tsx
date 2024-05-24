@@ -29,7 +29,7 @@ export function GLToneMappingControls() {
         NeutralToneMapping,
       },
     },
-    glToneMappingExposure: { min: 0, value: 1.0 },
+    glToneMappingExposure: { min: 0, value: 0.9 },
   });
 
   useEffect(() => {

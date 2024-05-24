@@ -77,7 +77,7 @@ export function Effects() {
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0.0 },
-        contrast: { min: -1, max: 1, value: 0.0 },
+        contrast: { min: -1, max: 1, value: 0.1 },
       },
       { collapsed: true }
     ),
@@ -99,8 +99,8 @@ export function Effects() {
           value: BlendFunction.NORMAL,
           options: BLEND_FUNCTIONS,
         },
-        hue: { min: -90, max: 90, step: 1, value: 0 },
-        saturation: { min: -90, max: 90, step: 1, value: 8 },
+        hue: { min: -90, max: 90, step: 1, value: 1 },
+        saturation: { min: -90, max: 90, step: 1, value: 9 },
       },
       { collapsed: true }
     ),
@@ -128,7 +128,7 @@ export function Effects() {
   return (
     <Suspense>
       <GLToneMappingControls />
-      <EffectComposer multisampling={antialiasing === "msaa" ? 8 : 0}>
+      <EffectComposer multisampling={antialiasing === "fxaa" ? 8 : 0}>
         <BrightnessContrast brightness={brightness} contrast={contrast} />
         <DepthOfField
           focusDistance={focusDistance}
