@@ -77,7 +77,7 @@ export function Effects() {
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0.0 },
-        contrast: { min: -1, max: 1, value: 0.1 },
+        contrast: { min: -1, max: 1, value: 0.12 },
       },
       { collapsed: true }
     ),
