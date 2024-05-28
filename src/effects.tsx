@@ -77,18 +77,18 @@ export function Effects() {
     brightnessContrast: folder(
       {
         brightness: { min: -1, max: 1, value: 0.0 },
-        contrast: { min: -1, max: 1, value: 0.12 },
+        contrast: { min: -1, max: 1, value: 0.08 },
       },
       { collapsed: true }
     ),
     bloom: folder(
-      { bloomIntensity: 0.2, mipmapBlur: false },
+      { bloomIntensity: 0.3, mipmapBlur: false },
       { collapsed: true }
     ),
     depthOfField: folder(
       {
-        focusDistance: 12,
-        focalLength: 63,
+        focusDistance: 7,
+        focalLength: 23,
         bokehScale: 5,
       },
       { collapsed: true }
@@ -100,7 +100,7 @@ export function Effects() {
           options: BLEND_FUNCTIONS,
         },
         hue: { min: -90, max: 90, step: 1, value: 1 },
-        saturation: { min: -90, max: 90, step: 1, value: 9 },
+        saturation: { min: -90, max: 90, step: 1, value: 12 },
       },
       { collapsed: true }
     ),
