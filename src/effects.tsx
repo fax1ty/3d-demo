@@ -82,7 +82,7 @@ export function Effects() {
       { collapsed: true }
     ),
     bloom: folder(
-      { bloomIntensity: 0.3, mipmapBlur: false },
+      { bloomIntensity: 0.3, mipmapBlur: true },
       { collapsed: true }
     ),
     depthOfField: folder(
